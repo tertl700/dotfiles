@@ -1,0 +1,6 @@
+alias zshconfig="vim ~/.zshrc"
+alias vimconfig="vim ~/.vimrc"
+alias aliasconfig="vim ~/.aliases"
+# alias ohmyzsh="vim ~/.oh-my-zsh"
+alias myip="curl http://ipecho.net/plain; echo"
+alias gclean="git clean -xfd"
