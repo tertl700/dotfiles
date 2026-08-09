@@ -46,8 +46,10 @@ if [[ "$PLATFORM" == macos ]]; then
     echo "Homebrew is required. Install it from https://brew.sh, then re-run." >&2
     exit 1
   fi
-  brew install zsh git vim curl vivid
-  brew install --cask font-ubuntu-mono ghostty || warn "cask install skipped (already present?)"
+  # coreutils supplies GNU ls (as `gls`); BSD ls ignores vivid's LS_COLORS.
+  brew install zsh git vim curl vivid coreutils
+  brew install --cask font-ubuntu-mono || warn "font cask skipped (already present?)"
+  brew install --cask ghostty || warn "ghostty cask skipped (already installed?)"
 else
   sudo apt-get update
   sudo apt-get install -y zsh git vim curl

@@ -42,7 +42,15 @@ alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias python='python3'
 
-# macOS ls has no --color=auto; it uses -G instead.
+# macOS ships BSD ls, which ignores LS_COLORS entirely (it reads LSCOLORS, a
+# different format) — so vivid's molokai palette would silently do nothing.
+# Prefer GNU ls from coreutils, which install.sh brings in; fall back to BSD's
+# own -G if it isn't there.
 if [[ "$OSTYPE" == darwin* ]]; then
-  alias ls='ls -G'
+  if command -v gls >/dev/null 2>&1; then
+    alias ls='gls --color=auto'
+    alias ll='gls -alF --color=auto'
+  else
+    alias ls='ls -G'
+  fi
 fi
