@@ -1,0 +1,81 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+
+    // NOTE: "defaultProfile" and the WSL profile "guid" below are generated per
+    // machine from the installed distro. On a new PC, open Settings -> Ubuntu and
+    // copy the guid it shows into both places. Everything else is portable as-is.
+    "defaultProfile": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+
+    "confirmCloseAllTabs": false,
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "initialCols": 100,
+    "initialRows": 24,
+    "tabWidthMode": "equal",
+    "theme": "system",
+    "useAcrylicInTabRow": true,
+
+    "keybindings":
+    [
+        { "id": "Terminal.CopyToClipboard", "keys": "ctrl+c" },
+        { "id": "Terminal.PasteFromClipboard", "keys": "ctrl+v" },
+        { "id": "Terminal.FindText", "keys": "ctrl+shift+f" },
+        { "id": "Terminal.DuplicatePaneAuto", "keys": "alt+shift+d" }
+    ],
+
+    "newTabMenu":
+    [
+        { "type": "remainingProfiles" }
+    ],
+
+    "profiles":
+    {
+        "defaults":
+        {
+            // "One Half Dark" ships with Windows Terminal, so "schemes" stays empty.
+            "colorScheme": "One Half Dark",
+            "closeOnExit": "graceful",
+            "cursorShape": "filledBox",
+            "font":
+            {
+                // No Nerd Font needed: the eastwood prompt uses no glyphs.
+                // Terminal falls back automatically if Ubuntu Mono is absent.
+                "face": "Ubuntu Mono",
+                "size": 12
+            }
+        },
+        "list":
+        [
+            {
+                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "name": "Ubuntu",
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
+                "startingDirectory": "//wsl$/Ubuntu/home/tommy",
+                "bellStyle": "none",
+                "hidden": false
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "hidden": false
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "Command Prompt",
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "hidden": false
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure",
+                "hidden": true
+            }
+        ]
+    },
+
+    "schemes": [],
+    "themes": []
+}

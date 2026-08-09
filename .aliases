@@ -6,8 +6,7 @@ alias vimconfig="vim ~/.vimrc"
 alias aliasconfig="vim ~/.aliases"
 alias gitconfig="vim ~/.gitconfig"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-
-
+alias dotfiles="cd ~/projects/dotfiles"
 
 # -------------------------------------------------------------------
 # Git
@@ -37,6 +36,13 @@ alias myip="curl http://ipecho.net/plain; echo"
 # -------------------------------------------------------------------
 # Other stuff
 # -------------------------------------------------------------------
-alias gh='history|grep'
+# Was 'gh' — renamed so it doesn't shadow the GitHub CLI.
+alias hgrep='history | grep'
 alias ls='ls --color=auto'
 alias ll='ls -alF'
+alias python='python3'
+
+# macOS ls has no --color=auto; it uses -G instead.
+if [[ "$OSTYPE" == darwin* ]]; then
+  alias ls='ls -G'
+fi
