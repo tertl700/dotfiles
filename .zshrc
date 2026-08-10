@@ -26,20 +26,14 @@ if command -v vivid >/dev/null 2>&1; then
 fi
 
 # -------------------------------------------------------------------
-# Auto-activate .venv when entering a directory that has one
+# Python
 # -------------------------------------------------------------------
-autoload -Uz add-zsh-hook
-
-_auto_venv() {
-  if [[ -f "$PWD/.venv/bin/activate" ]]; then
-    source "$PWD/.venv/bin/activate"
-  elif [[ -n "$VIRTUAL_ENV" && "$PWD" != "$VIRTUAL_ENV"* ]]; then
-    deactivate
-  fi
-}
-
-add-zsh-hook chpwd _auto_venv
-_auto_venv  # run on shell start too
+# Projects are uv-managed: `uv run` syncs and runs in ./.venv on its own, so
+# there's no chpwd hook activating envs. This only matters for the occasional
+# manual `source .venv/bin/activate` — it stops that script prepending its
+# unstyled "(name) " to PS1, where the name is either ".venv" or a repeat of
+# the path the prompt already shows.
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # -------------------------------------------------------------------
 # PATH
